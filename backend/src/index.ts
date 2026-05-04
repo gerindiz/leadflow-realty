@@ -10,7 +10,7 @@ const app = express();
 const PORT = Number(process.env.PORT ?? 3001);
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: ['http://localhost:3000', 'https://leadflow-realty.vercel.app'],
   credentials: true,
 }));
 app.use(express.json());
