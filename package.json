@@ -1,0 +1,12 @@
+{
+  "name": "leadflow-realty",
+  "version": "1.0.0",
+  "description": "LeadFlow Realty - Sistema de captación de leads inmobiliarios con IA",
+  "scripts": {
+    "dev": "npm run dev:backend & npm run dev:frontend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "db:setup": "cd backend && npm run db:generate && npm run db:migrate"
+  }
+}

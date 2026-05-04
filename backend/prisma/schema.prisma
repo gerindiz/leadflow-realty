@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id                String         @id @default(uuid())
+  nombre            String
+  email             String
+  telefono          String
+  tipoOperacion     TipoOperacion
+  presupuestoMin    Float?
+  presupuestoMax    Float?
+  zonas             String[]
+  ambientes         Int?
+  tieneFinanciamiento Boolean      @default(false)
+  urgencia          Urgencia       @default(SIN_DEFINIR)
+  score             Int            @default(0)
+  estado            EstadoLead     @default(NUEVO)
+  canalOrigen       CanalOrigen    @default(WEB)
+  agenteAsignado    String?
+  conversaciones    Conversacion[]
+  notas             Nota[]
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model Conversacion {
+  id        String   @id @default(uuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  mensajes  Json
+  createdAt DateTime @default(now())
+}
+
+model Nota {
+  id        String   @id @default(uuid())
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  contenido String
+  autor     String?
+  createdAt DateTime @default(now())
+}
+
+model Config {
+  id             String @id @default("singleton")
+  nombreAgencia  String @default("Mi Inmobiliaria")
+  nombreBot      String @default("Sofía")
+  scoreUmbral    Int    @default(70)
+  horarioInicio  String @default("08:00")
+  horarioFin     String @default("20:00")
+}
+
+enum TipoOperacion {
+  COMPRA
+  ALQUILER
+  INVERSION
+}
+
+enum Urgencia {
+  INMEDIATA
+  TRES_MESES
+  SEIS_MESES
+  SIN_DEFINIR
+}
+
+enum EstadoLead {
+  NUEVO
+  CALIFICADO
+  VISITA_AGENDADA
+  NEGOCIACION
+  CERRADO
+  PERDIDO
+}
+
+enum CanalOrigen {
+  WEB
+  WHATSAPP
+  INSTAGRAM
+}
