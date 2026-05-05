@@ -11,7 +11,7 @@
 
 **Sistema SaaS de captación y calificación de leads inmobiliarios con IA conversacional**
 
-[🌐 Demo en vivo](https://leadflow-realty.vercel.app) · [📊 CRM Dashboard](https://leadflow-realty.vercel.app/dashboard) · [📖 API Docs](#api)
+[🌐 Demo en vivo](https://leadflow-realty.vercel.app) · [📊 CRM Dashboard](https://leadflow-realty.vercel.app/dashboard) ·
 
 </div>
 
