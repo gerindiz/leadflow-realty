@@ -16,6 +16,16 @@
 </div>
 
 ---
+## 📸 Screenshots
+
+### Landing Page + Chat con Sofía
+![Landing](landing.webp)
+
+### CRM Dashboard
+![Dashboard](dashboard.webp)
+
+
+
 
 ## 📌 Descripción
 
